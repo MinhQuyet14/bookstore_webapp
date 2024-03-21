@@ -1,0 +1,36 @@
+.intro-section {
+    color: aliceblue;
+    text-align: center;
+}
+.product-image {
+    width: 80%;
+    height: 90%;
+    object-fit: cover;
+}
+.product-name {
+    color: aliceblue;
+}
+
+.product-description {
+    color: aliceblue;
+}
+
+.product-price {
+    color: aliceblue;
+}
+.product-action {
+    display: flex;
+    //justify-content: center;
+    margin-top: 10px;
+}
+.product-quantity button {
+    background-color: transparent;
+    color: white;
+    font-size: 19px;
+    cursor: pointer;
+}
+.product-quantity input {
+    font-size: 19px;
+    text-align: center;
+    width: 40px;
+}
