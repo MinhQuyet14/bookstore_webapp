@@ -1,0 +1,22 @@
+.container {
+    color: white;
+}
+.login-form {
+    background-color: rgb(58, 4, 49);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    max-width: 500px;
+    padding: 20px;
+}
+.checkbox-text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
