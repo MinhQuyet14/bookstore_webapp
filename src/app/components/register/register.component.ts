@@ -1,43 +1,44 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { RegisterDTO } from '../../dtos/user/register.dto';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   @ViewChild('registerForm') registerForm!: NgForm;
-  phone: string;
+  phoneNumber: string;
   password: string;
   retypePassword: string;
   fullName: string;
   address: string;
-  constructor(private http: HttpClient, private router:Router) {
-    this.phone = '';
+  constructor(private router:Router, private userService: UserService) {
+    this.phoneNumber = '';
     this.password = '';
     this.retypePassword = '';
     this.fullName = '';
     this.address = '';
     //inject http-router objects
   }
-  
-  ngOnInit(): void {
-  }
+  // ngOnInit(): void {
+  // }
   register(){
-    const message = `phone: ${this.phone}` + 
+    const message = `phone: ${this.phoneNumber}` + 
                     `password: ${this.password}` +
                     `retypePassword: ${this.retypePassword}` + 
                     `fullName: ${this.fullName}` +
                     `address: ${this.address}`;
 
     //alert(message);
-    const apiUrl = "http://localhost:8080/api/v1/users/register";
-    const registerData = {
+    debugger
+
+    const registerDTO:RegisterDTO= {
       "fullname": this.fullName,
-      "phone_number": this.phone,
+      "phone_number": this.phoneNumber,
       "address": this.address,
       "password": this.password,
       "retype_password": this.retypePassword,
@@ -45,21 +46,22 @@ export class RegisterComponent implements OnInit {
       "google_account_id": 0,
       "role_id": 1
     }
-    const headers = new HttpHeaders({'Content-Type': 'application/json', });
-    this.http.post(apiUrl, registerData, {headers}, )
-      .subscribe({
-        next: (response: any) => {
-          debugger
-          this.router.navigate(['/login']);
-        },
-        complete: ()=>{
-          debugger
-        },
-        error: (error: any) => {
-          alert("cannot register: "+error);
-          debugger
-        }
-    });
+    this.userService.register(registerDTO).subscribe({
+      next: (response: any) => {
+        debugger
+        this.router.navigate(['/login']);
+      },
+      complete: ()=>{
+        debugger
+      },
+      error: (error: any) => {
+        alert("cannot register: "+error);
+        debugger
+      }
+    })
+    //const headers = new HttpHeaders({'Content-Type': 'application/json', });
+    // this.http.post(apiUrl, registerData, {headers}, )
+    //   .subscribe();
   }
   checkPasswordsMatch(){
     if(this.password !== this.retypePassword){
@@ -68,8 +70,8 @@ export class RegisterComponent implements OnInit {
       this.registerForm.form.controls['retypePassword'].setErrors(null);
     }
   }
-  onPhoneChange(){
-    console.log(`Phone typed:  ${this.phone}`)
+  onPhoneNumberChange(){
+    console.log(`Phone typed:  ${this.phoneNumber}`)
    }
 
 }

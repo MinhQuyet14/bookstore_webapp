@@ -1,0 +1,30 @@
+<app-header></app-header>
+<div class="container">
+    <div class="intro-section">
+        <h2>Chi tiết sản phẩm</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img [src]="product?.url"
+                alt="product-img" class="product-image">
+        </div>
+        <div class="col-md-6">
+            <h4 class="product-name">{{ product?.name }}</h4>
+            <p class="product-description">{{ product?.description }}</p>
+            <p class="product-price">Giá: {{product?.price}} VNĐ</p>
+            <div class="product-action">
+                <button class="btn btn-primary" (click)="addToCart()">Thêm vào giỏ</button>
+                <p style="margin-right: 6px;"></p>
+                <button class="btn btn-success" (click)="buyNow()">Mua ngay</button>
+            </div>
+            <div class="product-quantity" style="margin-top: 5px;">
+                <div class="border-wrapper">
+                    <button (click)="decreaseQuantity()">-</button>
+                    <input type="number" [value]="quantity">
+                    <button (click)="increaseQuantity()">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
