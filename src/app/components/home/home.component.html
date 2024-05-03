@@ -20,10 +20,10 @@
     <div class="row">
         <div class="col-lg-4 col-md-6" *ngFor="let product of products">
             <div class="product-item">
-                <img [src]="product.url" alt="Product-img" class="product-image">
+                <a [routerLink]="['/products', product.id]"><img [src]="product.url" alt="Product-img" class="product-image"></a>
                 <h4 class="product-name">{{ product.name }}</h4>
                 <p class="product-description">{{ product.description.slice(0, 90) }}...</p>
-                <p class="product-price">Giá: {{product.price}} VNĐ</p>
+                <p class="product-price">Giá: {{product.price | number:'1.0-0'}}</p>
                 <div class="product-action">
                     <button class="btn btn-primary">Thêm vào giỏ</button>
                     <p style="margin-right: 6px;"></p>
@@ -34,21 +34,21 @@
     </div>
     <nav aria-label="Page navigation">
         <ul class="pagination">
-            <li class="page-item" *ngIf="currentPage > 1">
+            <li class="page-item">
                 <a href="#" class="page-link" (click)="onPageChange(1)">Đầu</a>
             </li>
-            <li class="page-item" *ngIf="currentPage > 1">
+            <li class="page-item" >
                 <a href="#" class="page-link" (click)="onPageChange(currentPage -1)">Trước</a>
             </li>
-            <li class="page-item" *ngIf="currentPage > 1">
+            <li class="page-item" >
                 <a href="#" class="page-link" (click)="onPageChange(currentPage+1)">Tiếp</a>
             </li>
-            <li class="page-item" *ngIf="currentPage > 1">
+            <li class="page-item" >
                 <a href="#" class="page-link" (click)="onPageChange(totalPages)">Cuối</a>
             </li>
         </ul>
     </nav>
-
+    <!-- *ngIf="currentPage > 1" -->
 </div>
 <!-- FOOTER -->
 <app-footer></app-footer>

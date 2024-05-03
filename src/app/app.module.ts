@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenIntercepter } from './intercepters/token.intercepter';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { AppComponent } from './components/app/app.component';
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
 
@@ -24,14 +25,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     OrderComponent,
     OrderDetailComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AppComponent,
+
   ],
   imports: [
     ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    
+    AppRoutingModule
   ],
   providers: [
     {
@@ -41,10 +44,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     }
   ],
   bootstrap: [
+    AppComponent
     //HomeComponent,
     //DetailProductComponent,
     //OrderComponent,
-    OrderDetailComponent,
+    //OrderDetailComponent,
     //LoginComponent
     //RegisterComponent
   ]

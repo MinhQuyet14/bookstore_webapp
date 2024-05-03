@@ -3,6 +3,7 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
 import { Category } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,11 @@ export class HomeComponent implements OnInit {
   visiblePage: number[] = [];
   keyword: string = "";
 
-  constructor(private productService: ProductService, private categoryService: CategoryService) { }
+  constructor(
+    private productService: ProductService, 
+    private categoryService: CategoryService, 
+    //private route: Route
+  ) { }
 
   ngOnInit(): void {
     this.getProducts(this.keyword , this.selectedCategoryId ,this.currentPage, this.itemsPerPage);
@@ -84,5 +89,8 @@ export class HomeComponent implements OnInit {
     
     return new Array(endPage-startPage +1).fill(0).map((_, index)=>startPage+index);
   }
-
+  // onProductClick(productId: number){
+  //   debugger
+  //   this.route.navigate(['/products', productId]);
+  // }
 }

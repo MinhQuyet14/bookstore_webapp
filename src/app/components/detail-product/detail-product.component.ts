@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -13,15 +14,22 @@ export class DetailProductComponent implements OnInit {
   productId: number = 0;
   apiUrl: string = "http://localhost/api/v1";
   quantity: number = 1;
-  constructor(private productService: ProductService, private cartService: CartService) { }
+  constructor(
+    private productService: ProductService, 
+    private cartService: CartService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     debugger
     //this.cartService.clearCart();
-    const idParam: number = 5;
-    if(idParam !== null){
-      this.productId = idParam;
-    }
+    // const idParam: number = 5;
+    // if(idParam !== null){
+    //   this.productId = idParam;
+    // }
+    this.route.params.subscribe(params => {
+      this.productId = +params['id'];
+    });
     if(!isNaN(this.productId)){
       this.productService.getDetailProduct(this.productId).subscribe({
         next: (response: any) => {
@@ -40,7 +48,7 @@ export class DetailProductComponent implements OnInit {
         },
       });
     } else {
-      console.error("Invalid productId: " + idParam);
+      console.error("Invalid productId: " + this.productId);
     }
   }
   addToCart():void {
