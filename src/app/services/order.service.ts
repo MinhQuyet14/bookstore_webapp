@@ -15,5 +15,8 @@ export class OrderService {
     placeOrder(orderData: OrderDTO): Observable<any> {
         return this.http.post(this.apiOrder, orderData);
     }
+    getOrderById(orderId: number) :Observable<any> {
+        return this.http.get(`${this.apiOrder}/${orderId}`);
+    }
     
 }
