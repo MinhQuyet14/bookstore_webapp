@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import { OrderDTO } from 'src/app/dtos/order/order.dto';
 import { Product } from 'src/app/models/product';
@@ -34,11 +34,20 @@ export class OrderComponent implements OnInit {
     private orderService: OrderService,
     private fb: FormBuilder
   ) {
-    this.orderForm = this.fb.group({});
+    this.orderForm = this.fb.group({
+      fullname: [''],
+      email: [''],
+      phone_number: [''],
+      address: [''],
+      note: [''],
+      shipping_method: [''],
+      payment_method: ['']
+    });
    }
 
   ngOnInit(): void {
     debugger
+    // this.cartService.clearCart();
     const cart = this.cartService.getCart();
     const productIds = Array.from(cart.keys());
 
@@ -78,7 +87,7 @@ export class OrderComponent implements OnInit {
       this.orderService.placeOrder(this.orderData).subscribe({
         next: (response:any)=>{
           debugger
-          console.log('Đặt hàng thành công')
+          alert('Đặt hàng thành công')
         },
         complete: ()=>{
           debugger
@@ -86,7 +95,7 @@ export class OrderComponent implements OnInit {
         },
         error: (error: any) => {
           debugger
-          console.log('Lỗi khi đặt hàng')
+          alert('Lỗi khi đặt hàng')
         }
       });
     } else {

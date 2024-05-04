@@ -7,6 +7,8 @@ import { LoginResponse } from '../../responses/user/login.response'
 import { TokenService } from '../../services/token.service';
 import { RoleService } from '../../services/role.service';
 import { Role } from '../../models/role';
+import { HttpHeaders } from '@angular/common/http';
+import { UserResponse } from 'src/app/responses/user/user.response';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,11 +22,12 @@ export class LoginComponent {
   roles: Role[] = [];
   rememberMe: boolean = true;
   selectedRole: Role | undefined;
+  userResponse?: UserResponse 
   constructor(
     private router: Router,
     private userService: UserService,
     private tokenService: TokenService,
-    private roleService: RoleService
+    private roleService: RoleService,
   ) {
 
   }
@@ -63,6 +66,28 @@ export class LoginComponent {
         debugger
         const { token } = response// distructering: trích xuất đối tượng token từ response
         this.tokenService.setToken(token);
+        this.userService.getUserDetails(token).subscribe({
+          next: (response: any) => {
+            debugger
+            this.userResponse = {
+              id: response.id,
+              fullname: response.fullname,
+              phone_number: response.phone_number,
+              address: response.address,
+              is_active: response.is_active,
+              facebook_account_id: response.facebook_account_id,
+              google_account_id: response.google_account_id,
+              role: response.role
+            }
+            this.userService.saveUserToLocalStorage(this.userResponse);
+            this.router.navigate(['/']);
+          },
+          complete: ()=>{debugger},
+          error: (error: any) => {
+            debugger
+            alert(error)
+          }
+        })
       },
       complete: () => {
         debugger
@@ -72,7 +97,7 @@ export class LoginComponent {
         debugger
       }
     })
-    //const headers = new HttpHeaders({'Content-Type': 'application/json', });
+    // const headers = new HttpHeaders({'Content-Type': 'application/json', });
     // this.http.post(apiUrl, registerData, {headers}, )
     //   .subscribe();
   }
