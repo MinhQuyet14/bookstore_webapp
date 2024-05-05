@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -17,7 +17,8 @@ export class DetailProductComponent implements OnInit {
   constructor(
     private productService: ProductService, 
     private cartService: CartService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -71,7 +72,8 @@ export class DetailProductComponent implements OnInit {
     }
   }
   buyNow(): void {
-    //no supported
+    this.cartService.addToCart(this.productId, this.quantity);
+    this.router.navigate(['/orders'])
   }
   // showImage(): void{
   //   debugger

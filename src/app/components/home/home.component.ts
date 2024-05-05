@@ -3,7 +3,8 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
 import { Category } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
-import { Route } from '@angular/router';
+import { ActivatedRoute, Route } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -20,16 +21,19 @@ export class HomeComponent implements OnInit {
   totalPages: number = 0;
   visiblePage: number[] = [];
   keyword: string = "";
-
+  product?: Product
+  quantity: number = 1
   constructor(
     private productService: ProductService, 
     private categoryService: CategoryService, 
-    //private route: Route
+    private cartService: CartService,
+    //private rout: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.getProducts(this.keyword , this.selectedCategoryId ,this.currentPage, this.itemsPerPage);
     this.getCategories(1, 100);
+  
   }
   getCategories(page: number, limit: number){
     this.categoryService.getCategories(page, limit).subscribe({
@@ -88,6 +92,21 @@ export class HomeComponent implements OnInit {
     }
     
     return new Array(endPage-startPage +1).fill(0).map((_, index)=>startPage+index);
+  }
+  addToCart():void {
+    debugger
+    // if(this.product){
+    //   this.cartService.addToCart(this.productId, this.quantity);
+    //   alert("Thêm sản phẩm thành công!")
+    // } else {
+    //   console.error("Cannot add product to cart, product_id is null");
+    // }
+  }
+  buyNow(): void {
+    // if(this.product){
+    //   this.cartService.addToCart(this.product.id, this.quantity);
+    // }
+    // this.router.navigate(['/orders'])
   }
   // onProductClick(productId: number){
   //   debugger

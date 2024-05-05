@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { OrderDTO } from 'src/app/dtos/order/order.dto';
+import { Order } from 'src/app/models/order';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -32,7 +34,9 @@ export class OrderComponent implements OnInit {
     private cartService: CartService,
     private productService: ProductService,
     private orderService: OrderService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.orderForm = this.fb.group({
       fullname: [''],
@@ -47,11 +51,14 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     debugger
-    // this.cartService.clearCart();
+    //this.cartService.clearCart();
     const cart = this.cartService.getCart();
     const productIds = Array.from(cart.keys());
 
     debugger
+    if(productIds.length === 0){
+      return;
+    }
     this.productService.getProductsByIds(productIds).subscribe({
       next: (products) => {
         debugger
@@ -84,10 +91,13 @@ export class OrderComponent implements OnInit {
         product_id: cartItem.product.id,
         quantity: cartItem.quantity
       }));
+      this.orderData.total_money = this.totalAmount;
       this.orderService.placeOrder(this.orderData).subscribe({
-        next: (response:any)=>{
+        next: (response:Order)=>{
           debugger
-          alert('Đặt hàng thành công')
+          alert('Đặt hàng thành công');
+          this.cartService.clearCart();
+          this.router.navigate(['/']);
         },
         complete: ()=>{
           debugger
@@ -95,7 +105,7 @@ export class OrderComponent implements OnInit {
         },
         error: (error: any) => {
           debugger
-          alert('Lỗi khi đặt hàng')
+          alert(`Lỗi khi đặt hàng: ${error}`);
         }
       });
     } else {

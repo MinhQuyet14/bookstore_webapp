@@ -65,15 +65,15 @@
                                 </div>
                             </td>
                             <td>{{ item.quantity }}</td>
-                            <td>{{ item.product.price | number:'1.2-2' }}</td>
-                            <td>{{ (item.product.price*item.quantity) | number: '1.2-2' }}</td>
+                            <td>{{ item.product.price | number:'1.0-0' }}</td>
+                            <td>{{ (item.product.price*item.quantity) | number: '1.0-0' }}</td>
                         </tr>
                     </ng-container>
                 </tbody>
             </table>
             <table>
                 <div class="text-start mt-3">
-                    <h4 class="header-text text-end">Tổng giá: {{ totalAmount | number:'1.2-2' }} đ</h4>
+                    <h4 class="header-text text-end">Tổng giá: {{ totalAmount | number:'1.0-0' }} đ</h4>
                 </div>
             </table>
             <div class="text-start mt-3">

@@ -25,9 +25,9 @@
                 <p class="product-description">{{ product.description.slice(0, 90) }}...</p>
                 <p class="product-price">Giá: {{product.price | number:'1.0-0'}}</p>
                 <div class="product-action">
-                    <button class="btn btn-primary">Thêm vào giỏ</button>
+                    <button (click)="addToCart()" class="btn btn-primary">Thêm vào giỏ</button>
                     <p style="margin-right: 6px;"></p>
-                    <button class="btn btn-success">Mua ngay</button>
+                    <button class="btn btn-success" (click)="buyNow()">Mua ngay</button>
                 </div>
             </div>
         </div>

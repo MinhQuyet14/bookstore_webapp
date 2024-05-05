@@ -14,10 +14,12 @@ import { TokenIntercepter } from './intercepters/token.intercepter';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './components/app/app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CommonModule, NgComponentOutlet } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 @NgModule({
   declarations: [
-
-
     HomeComponent,
     HeaderComponent,
     FooterComponent,
@@ -27,14 +29,16 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     RegisterComponent,
     AppComponent,
-
   ],
   imports: [
     ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgComponentOutlet,
+    CommonModule,
+    NgbModule
   ],
   providers: [
     {

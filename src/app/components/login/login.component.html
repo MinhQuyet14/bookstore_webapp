@@ -38,15 +38,6 @@
                     <select class="form-control access-right" [(ngModel)]="selectedRole">
                         <option selected disabled>Quyền đăng nhập</option>
                         <option *ngFor="let role of roles" [ngValue]="role">{{role.name}}</option>
-                        <!-- <option>Quản trị viên</option> -->
-                        <!-- <ng-container *ngFor="let role of roles">
-                            <ng-container *ngIf="role.name === 'admin'; else notAdmin">
-                                <option [ngValue]="role">Quản trị viên</option>
-                            </ng-container>
-                            <ng-template #notAdmin>
-                                <option [ngValue]="role">Người dùng</option>
-                            </ng-template>
-                        </ng-container> -->
                     </select>
                 </div>
                 <button type="button" 
