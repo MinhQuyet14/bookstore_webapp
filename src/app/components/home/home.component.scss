@@ -1,3 +1,4 @@
+@import url('../../styles/shared-styles.scss');
 .intro-section {
     text-align: center;
     color: antiquewhite;
@@ -61,3 +62,7 @@ input::placeholder {
     justify-content: center;
     margin-top: 10px;
 }
+// .btn-primary {
+//     background-color: $shopapp-color;
+//     border-color: $shopapp-color;
+// }

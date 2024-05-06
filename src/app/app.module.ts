@@ -16,7 +16,7 @@ import { AppComponent } from './components/app/app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule, NgComponentOutlet } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { UserProfileComponent } from './components/user-profile/user.profile.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     RegisterComponent,
     AppComponent,
+    UserProfileComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -48,13 +49,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     }
   ],
   bootstrap: [
-    AppComponent
+    AppComponent,
     //HomeComponent,
     //DetailProductComponent,
     //OrderComponent,
     //OrderDetailComponent,
     //LoginComponent
     //RegisterComponent
+    //UserProfileComponent
   ]
 })
 export class AppModule { }
