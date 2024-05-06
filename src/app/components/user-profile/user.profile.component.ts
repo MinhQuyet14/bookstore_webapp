@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UserResponse } from 'src/app/responses/user/user.response';
-import { ValidationError } from 'class-validator';
 import { UpdateUserDTO } from 'src/app/dtos/user/update.user.dto';
 
 @Component({
@@ -26,10 +25,13 @@ export class UserProfileComponent implements OnInit{
       this.userProfileForm = this.formBuilder.group({
         fullname: [''],
         phone_number: [''],
+        email: [''],
         password: [''],
         retype_password: [''],
         address: [''],
         note: ['']
+      }, {
+        validators: this.passwordMatchValidator
       })
     }
     ngOnInit(): void {
@@ -43,7 +45,8 @@ export class UserProfileComponent implements OnInit{
             };
             this.userProfileForm.patchValue({
               fullname: this.userResponse?.fullname,
-              address: this.userResponse?.address
+              address: this.userResponse?.address,
+              // email: this.userResponse?.email,
             })
             if(this.userResponse != undefined) {
               this.userService.saveUserToLocalStorage(this.userResponse);
@@ -76,15 +79,19 @@ export class UserProfileComponent implements OnInit{
           address: this.userProfileForm.get('address')?.value,
           password: this.userProfileForm.get('password')?.value,
           retype_password: this.userProfileForm.get('retype_password')?.value,
+          //email: this.userProfileForm.get('email')?.value
         };
         this.userService.updateUserDetail(this.token, updateUserDTO)
           .subscribe({
             next: (response: any) => {
+              debugger
               this.userService.removeUserFromLocalStorage();
               this.tokenService.removeToken();
+              alert('Cập nhật thành công, mời bạn đăng nhập lại !')
               this.router.navigate(['/login']);
             },
             error: (error: any)=> {
+              debugger
               alert("Không thể cập nhật, vui lòng kiểm tra lại:" + error)
             }
           })

@@ -77,7 +77,8 @@ export class LoginComponent implements OnInit{
               is_active: response.is_active,
               facebook_account_id: response.facebook_account_id,
               google_account_id: response.google_account_id,
-              role: response.role
+              role: response.role,
+              //email: response.email
             }
             this.userService.saveUserToLocalStorage(this.userResponse);
             this.router.navigate(['/']);
