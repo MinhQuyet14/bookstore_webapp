@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <h3>Trang quản lý đơn hàng</h3>
+    <table style="border: 1px solid black;">
+        <thead style="border: 1px solid black;">
+            <tr>
+                <th>ID</th>
+                <th>ID Người dùng</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Ghi chú</th>
+                <th>Ngày đặt</th>
+                <th>Trạng thái</th>
+                <th>Tổng giá tiền</th>
+                <th>Phương thức giao hàng</th>
+                <th>Địa chỉ giao hàng</th>
+                <th>Ngày giao hàng</th>
+                <th>Phương thức thanh toán</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let order of orders" style="border: 1px solid black;">
+            <tr>
+                <td>{{order.id}}</td>
+                <td>{{order.user_id}}</td>
+                <td>{{order.fullname}}</td>
+                <td>{{order.email}}</td>
+                <td>{{order.phone_number}}</td>
+                <td>{{order.address}}</td>
+                <td>{{order.note}}</td>
+                <td>{{order.order_date}}</td>
+                <td>{{order.status}}</td>
+                <td>{{order.total_money}}</td>
+                <td>{{order.shipping_method}}</td>
+                <td>{{order.shipping_address}}</td>
+                <td>{{order.shipping_date}}</td>
+                <td>{{order.payment_method}}</td>
+                <td><button class="btn btn-danger" style="color: red;">Xóa</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation" style="margin-top: 100px;">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" (click)="onPageChange(0)">Đầu</a>
+                </li>
+                <li class="page-item" >
+                    <a class="page-link" (click)="onPageChange(currentPage -1)">Trước</a>
+                </li>
+                <li class="page-item" >
+                    <a class="page-link" (click)="onPageChange(currentPage+1)">Tiếp</a>
+                </li>
+                <li class="page-item" >
+                    <a class="page-link" (click)="onPageChange(totalPages - 1)">Cuối</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- (click)="deleteOrder(orderId)" -->

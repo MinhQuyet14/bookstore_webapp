@@ -18,6 +18,7 @@ import { CommonModule, NgComponentOutlet } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './components/user-profile/user.profile.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { OrderAdminComponent } from './components/admin/orders/order.admin.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AdminComponent } from './components/admin/admin.component';
     RegisterComponent,
     AppComponent,
     UserProfileComponent,
-    AdminComponent
+    AdminComponent,
+    OrderAdminComponent
   ],
   imports: [
     ReactiveFormsModule,

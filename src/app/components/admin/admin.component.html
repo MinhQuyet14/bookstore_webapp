@@ -6,20 +6,25 @@
         <button class="btn btn-danger btn-sm" (click)="logout()">Logout</button>
     </header>
     <div class="row">
-        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <nav id="sidebar" class="col-md-2 col-lg-2 d-md-block bg-light sidebar">
             <div class="position-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="" class="nav-link">Orders</a>
+                        <a routerLink="/admin/orders" (click)="showAdminComponent('orders')" class="nav-link">Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Categories</a>
+                        <a href="" (click)="showAdminComponent('categories')" class="nav-link">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Products</a>
+                        <a href="" (click)="showAdminComponent('products')" class="nav-link">Products</a>
                     </li>
                 </ul>
             </div>
         </nav>
+        <div class="col-md-10 col-lg-10 overflow-auto">
+            <ng-container [ngSwitch]="adminComponent">
+                <app-order-admin *ngSwitchCase="'orders'"></app-order-admin>
+            </ng-container>
+        </div>
     </div>
 </div>
