@@ -7,6 +7,9 @@ import { OrderComponent } from "./components/order/order.component";
 import { OrderDetailComponent } from "./components/order-confirm/oder.detail.component";
 import { NgModule } from "@angular/core";
 import { UserProfileComponent } from "./components/user-profile/user.profile.component";
+import { AdminComponent } from "./components/admin/admin.component";
+import { AuthGuardFn } from "./components/guards/auth.guard";
+import { AdminGuardFn } from "./components/guards/admin.guard";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -15,8 +18,8 @@ const routes: Routes = [
     {path: 'products/:id', component: DetailProductComponent},
     {path: 'orders', component: OrderComponent},
     {path: 'orders/:id', component: OrderDetailComponent},
-    {path: 'user-profile', component: UserProfileComponent}
-];
+    {path: 'user-profile', component: UserProfileComponent},
+    {path: 'admin', component: AdminComponent}]
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

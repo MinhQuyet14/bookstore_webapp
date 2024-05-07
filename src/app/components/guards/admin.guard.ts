@@ -1,3 +1,4 @@
+
 import { Injectable, inject } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
 import { UserResponse } from "src/app/responses/user/user.response";
@@ -7,7 +8,8 @@ import { UserService } from "src/app/services/user.service";
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard {
+export class AdminGuard {
+    userResponse?: UserResponse | null;
     constructor(
         private tokenService: TokenService, 
         private router: Router,
@@ -16,8 +18,10 @@ export class AuthGuard {
     canActive(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         const isTokenExpired = this.tokenService.isTokenExpired();
         const isUserIdValid = this.tokenService.getUserId() > 0;
+        this.userResponse = this.userService.getUserFromLocalStorage();
+        const isAdmin = this.userResponse?.role.name == 'ADMIN';
         debugger
-        if(!isTokenExpired && isUserIdValid) {
+        if(!isTokenExpired && isUserIdValid && isAdmin) {
             return true;
         } else {
             this.router.navigate(['/login']);
@@ -26,7 +30,7 @@ export class AuthGuard {
     }
 }
 
-export const AuthGuardFn: CanActivateFn = (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean => {
+export const AdminGuardFn: CanActivateFn = (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean => {
     debugger
-    return inject(AuthGuard).canActive(next, state);
+    return inject(AdminGuard).canActive(next, state);
 }

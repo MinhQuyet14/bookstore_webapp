@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit{
             this.userResponse = {
               id: response.id,
               fullname: response.fullname,
-              phone_number: response.phone_number,
+              //phone_number: response.phone_number,
               address: response.address,
               is_active: response.is_active,
               facebook_account_id: response.facebook_account_id,
@@ -81,7 +81,12 @@ export class LoginComponent implements OnInit{
               //email: response.email
             }
             this.userService.saveUserToLocalStorage(this.userResponse);
-            this.router.navigate(['/']);
+            if(this.userResponse?.role.name == 'ADMIN'){
+              alert('Xin chào quản trị viên')
+              this.router.navigate(['/admin'])
+            } else if(this.userResponse?.role.name == 'USER') {
+              this.router.navigate(['/']);
+            }
           },
           complete: ()=>{debugger},
           error: (error: any) => {
