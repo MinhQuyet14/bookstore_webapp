@@ -10,7 +10,10 @@ import { UserProfileComponent } from "./components/user-profile/user.profile.com
 import { AdminComponent } from "./components/admin/admin.component";
 import { AuthGuardFn } from "./components/guards/auth.guard";
 import { AdminGuardFn } from "./components/guards/admin.guard";
-import { OrderAdminComponent } from "./components/admin/orders/order.admin.component";
+import { OrderAdminComponent } from "./components/admin/order/order.admin.component";
+import { ProductAdminComponent } from "./components/admin/product/product.admin.component";
+import { CategoryAdminComponent } from "./components/admin/category/category.admin.component";
+import { DetailOrderAdminComponent } from "./components/admin/detail-order/detail.order.admin.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -22,6 +25,11 @@ const routes: Routes = [
     {path: 'user-profile', component: UserProfileComponent},
     {path: 'admin', component: AdminComponent},
     {path: 'admin/orders', component: OrderAdminComponent},
+    {path: 'admin/products', component: ProductAdminComponent},
+    {path: 'admin/categories', component: CategoryAdminComponent},
+    {path: 'admin/orders/:id', component: DetailOrderAdminComponent},
+
+
 ]
 
 @NgModule({

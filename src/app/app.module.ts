@@ -18,7 +18,10 @@ import { CommonModule, NgComponentOutlet } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './components/user-profile/user.profile.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { OrderAdminComponent } from './components/admin/orders/order.admin.component';
+import { OrderAdminComponent } from './components/admin/order/order.admin.component';
+import { ProductAdminComponent } from './components/admin/product/product.admin.component';
+import { CategoryAdminComponent } from './components/admin/category/category.admin.component';
+import { DetailOrderAdminComponent } from './components/admin/detail-order/detail.order.admin.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { OrderAdminComponent } from './components/admin/orders/order.admin.compo
     AppComponent,
     UserProfileComponent,
     AdminComponent,
-    OrderAdminComponent
+    OrderAdminComponent,
+    ProductAdminComponent,
+    CategoryAdminComponent,
+    DetailOrderAdminComponent
   ],
   imports: [
     ReactiveFormsModule,

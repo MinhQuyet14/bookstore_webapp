@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <h1>Chi tiết đơn hàng</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Thông tin đơn hàng</h3>
+            <p><strong>Mã đơn hàng:</strong>{{orderResponse.id}}</p>
+            <p><strong>Mã người dùng:</strong>{{orderResponse.user_id}}</p>
+            <p><strong>Họ và tên:</strong>{{orderResponse.fullname}}</p>
+            <p><strong>Số điện thoại:</strong>{{orderResponse.phone_number}}</p>
+            <p><strong>Email:</strong>{{orderResponse.email}}</p>
+            <p><strong>Địa chỉ:</strong>{{orderResponse.address}}</p>
+            <p><strong>Ghi chú:</strong>{{orderResponse.note}}</p>
+            <p><strong>Ngày đặt hàng:</strong>{{orderResponse.order_date | date}}</p>
+
+            <div class="form-group">
+                <label for="statusSelect"><strong>Status:</strong></label>
+                <select id="statusSelect" class="form-control" [(ngModel)]="orderResponse.status">
+                <!-- <select name="statusSelect" id="statusSelect" class="form-control"> -->
+                    <option value="pending">Chưa xử lý</option>
+                    <option value="processing">Đang xử lý</option>
+                    <option value="shipped">Đã vận chuyển</option>
+                    <option value="delivered">Đã giao</option>
+                    <option value="cancelled">Đã hủy bỏ</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <h3></h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Giá tiền</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order_detail of orderResponse.order_details; let i = index">
+                <td>{{order_detail.product.name}}</td>
+                <td>{{order_detail.product.price}}</td>
+                <td>{{order_detail.number_of_products}}</td>
+                <td>{{ order_detail.number_of_products * order_detail.product.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary col-md-2" style="color: blue;" (click)="saveOrder()">Lưu</button>
+</div>

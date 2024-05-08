@@ -1,0 +1,21 @@
+* {
+    background-color: white;
+}
+.space {
+    background-color: white;
+}
+.container-fluid {
+    background-color: white;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    height: 100vh;
+}
+table {
+    border-collapse: collapse;
+    border: 1px solid black; /* Đường viền cho bảng */
+}
+
+td, th {
+    border: 1px solid black; /* Đường viền cho các ô */
+    padding: 8px; /* Khoảng cách nội dung với viền */
+}
