@@ -1,1 +1,31 @@
-<h1>This is Products admin control page</h1>
+<div class="container-fluid">
+    <h3>Trang quản lý sản phẩm</h3>
+    <table class="table" >
+        <thead class="thead-dark">
+            <tr>
+                <th>Mã sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình ảnh</th>
+                <th>Mô tả</th>
+                <th>Giá</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let product of products">
+            <tr>
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td><img src="" alt=""></td>
+                <td>{{product.description}}</td>
+                <td>{{product.price}}</td>
+                <td>
+                    <div style="display: inline-block;">
+                        <button class="btn btn-primary" style="color: rgb(76, 76, 235);" (click)="viewDetail(product)">Xem chi
+                            tiết</button>
+                        <button class="btn btn-danger" style="color: red;" (click)="deleteProduct(product.id)">Xóa</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -16,6 +16,8 @@ export class OrderDTO {
     total_money: number
     payment_method: string
     shipping_method: string
+    shipping_date: Date;
+    status: string;
     cart_items: CartItem[]
 
     constructor(data: any){
@@ -29,5 +31,7 @@ export class OrderDTO {
         this.payment_method = data.payment_method;
         this.shipping_method = data.shipping_method;
         this.cart_items = data.cart_items;
+        this.shipping_date = new Date();
+        this.status = data.status
     }
 }

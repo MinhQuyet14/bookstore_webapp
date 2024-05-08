@@ -27,8 +27,9 @@ export class OrderService {
         return this.http.get<any>(this.apiGetAllOrders, {params});
     }
     updateOrder(orderId: number, orderData: OrderDTO): Observable<any> {
+        debugger
         const url = `${this.apiOrder}/${orderId}`;
-        return this.http.put(url, orderData);
+        return this.http.put<any>(url, orderData);
     }
     deleteOrder(orderId: number):Observable<any> {
         const url = `${this.apiOrder}/${orderId}`;

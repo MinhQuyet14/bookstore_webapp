@@ -20,7 +20,6 @@ import { UserProfileComponent } from './components/user-profile/user.profile.com
 import { AdminComponent } from './components/admin/admin.component';
 import { OrderAdminComponent } from './components/admin/order/order.admin.component';
 import { ProductAdminComponent } from './components/admin/product/product.admin.component';
-import { CategoryAdminComponent } from './components/admin/category/category.admin.component';
 import { DetailOrderAdminComponent } from './components/admin/detail-order/detail.order.admin.component';
 
 @NgModule({
@@ -38,7 +37,6 @@ import { DetailOrderAdminComponent } from './components/admin/detail-order/detai
     AdminComponent,
     OrderAdminComponent,
     ProductAdminComponent,
-    CategoryAdminComponent,
     DetailOrderAdminComponent
   ],
   imports: [

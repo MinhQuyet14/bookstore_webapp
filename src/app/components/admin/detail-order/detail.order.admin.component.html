@@ -15,12 +15,11 @@
             <div class="form-group">
                 <label for="statusSelect"><strong>Status:</strong></label>
                 <select id="statusSelect" class="form-control" [(ngModel)]="orderResponse.status">
-                <!-- <select name="statusSelect" id="statusSelect" class="form-control"> -->
-                    <option value="pending">Chưa xử lý</option>
-                    <option value="processing">Đang xử lý</option>
-                    <option value="shipped">Đã vận chuyển</option>
-                    <option value="delivered">Đã giao</option>
-                    <option value="cancelled">Đã hủy bỏ</option>
+                    <option value="pending">pending</option>
+                    <option value="processing">processing</option>
+                    <option value="shipped">shipped</option>
+                    <option value="delivered">delivered</option>
+                    <option value="cancelled">cancelled</option>
                 </select>
             </div>
         </div>
@@ -40,7 +39,7 @@
                 <td>{{order_detail.product.name}}</td>
                 <td>{{order_detail.product.price}}</td>
                 <td>{{order_detail.number_of_products}}</td>
-                <td>{{ order_detail.number_of_products * order_detail.product.price }}</td>
+                <td>{{ (order_detail.number_of_products * order_detail.product.price) | number:'1.0-0'  }}</td>
             </tr>
         </tbody>
     </table>

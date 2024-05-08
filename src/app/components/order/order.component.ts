@@ -28,7 +28,9 @@ export class OrderComponent implements OnInit {
     total_money: 0,
     payment_method: 'cod',
     shipping_method: 'express',
-    cart_items: []
+    cart_items: [],
+    shipping_date: new Date(),
+    status: ''
   };
   constructor(
     private cartService: CartService,

@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
     });
   }
   getProducts(keyword: string, selectedCategoryId: number, page: number, limit: number){
-    this.productService.getProducts(keyword, selectedCategoryId, page, limit).subscribe({
+    this.productService.getAllProducts(keyword, selectedCategoryId, page, limit).subscribe({
       next: (response: any) => {
         debugger
         this.products = response.products;

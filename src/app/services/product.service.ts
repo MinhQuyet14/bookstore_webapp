@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { Product } from '../models/product';
+import { ProductDTO } from "../dtos/product/product.dto";
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,7 @@ export class ProductService {
     private apiGetProducts = "http://localhost:8080/api/v1/products";
 
     constructor(private http: HttpClient) {}
-    getProducts(keyword: string, categoryId: number,page: number, limit: number) : Observable<Product[]> {
+    getAllProducts(keyword: string, categoryId: number,page: number, limit: number) : Observable<Product[]> {
         const params = new HttpParams()
             .set('keyword', keyword)
             .set('category_id', categoryId)
@@ -26,6 +27,12 @@ export class ProductService {
         debugger;
         const params = new HttpParams().set('ids', productIds.join(','));
         return this.http.get<Product[]>(`${this.apiGetProducts}/by-ids`, {params});
+    }
+    deleteProduct(productId: number):Observable<any> {
+        return this.http.delete(`${this.apiGetProducts}/${productId}`);
+    }
+    updateProduct(productId: number, productDTO: ProductDTO){
+        return this.http.put(`${this.apiGetProducts}/${productId}`, productDTO);
     }
 }
 

@@ -64,7 +64,24 @@ export class OrderAdminComponent implements OnInit {
         return new Array(endPage-startPage +1).fill(0).map((_, index)=>startPage+index);
     }
     deleteOrder(id:number) {
-
+        const confirmation = window
+            .confirm('Bạn có chắc muốn xóa đơn hàng này ?');
+        if(confirmation) {
+            debugger
+            this.orderService.deleteOrder(id).subscribe({
+                next: (response:any)=> {
+                    debugger
+                    alert('Xóa thành công')
+                },
+                complete: ()=> {
+                    debugger;
+                },
+                error: (error:any)=> {
+                    debugger;
+                    alert('Không thể xóa, đã có lỗi: '+ error);
+                }
+            });
+        }
     }
     viewDetail(order:OrderResponse){
         debugger

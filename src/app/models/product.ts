@@ -5,4 +5,5 @@ export interface Product {
     url: string;
     description: string;
     category_id: number;
+    author: string;
 }
