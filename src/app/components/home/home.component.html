@@ -22,7 +22,7 @@
             <div class="product-item">
                 <a [routerLink]="['/products', product.id]"><img [src]="product.url" alt="Product-img" class="product-image"></a>
                 <h4 class="product-name">{{ product.name }}</h4>
-                <p class="product-description">{{ product.description.slice(0, 90) }}...</p>
+                <p class="product-description">{{ product.description.slice(0, 95) }}...</p>
                 <p class="product-price">Giá: {{product.price | number:'1.0-0'}}</p>
                 <div class="product-action">
                     <button (click)="addToCart()" class="btn btn-primary">Thêm vào giỏ</button>

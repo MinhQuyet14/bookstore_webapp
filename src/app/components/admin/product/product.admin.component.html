@@ -15,8 +15,8 @@
             <tr>
                 <td>{{product.id}}</td>
                 <td>{{product.name}}</td>
-                <td><img src="" alt=""></td>
-                <td>{{product.description}}</td>
+                <td><img src="{{product.url}}" alt="" height="300px" width="260px"></td>
+                <td><textarea rows="10" cols="60" id="description" [(ngModel)]="product.description" readonly></textarea></td>
                 <td>{{product.price}}</td>
                 <td>
                     <div style="display: inline-block;">
@@ -28,4 +28,22 @@
             </tr>
         </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation" style="margin-top: 100px;">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" (click)="onPageChange(0)">Đầu</a>
+                </li>
+                <li class="page-item" >
+                    <a class="page-link" (click)="onPageChange(currentPage -1)">Trước</a>
+                </li>
+                <li class="page-item" >
+                    <a class="page-link" (click)="onPageChange(currentPage+1)">Tiếp</a>
+                </li>
+                <li class="page-item" >
+                    <a class="page-link" (click)="onPageChange(totalPages - 1)">Cuối</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>

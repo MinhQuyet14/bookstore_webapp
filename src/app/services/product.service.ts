@@ -20,7 +20,7 @@ export class ProductService {
             .set('limit', limit.toString())
         return this.http.get<Product[]>(this.apiGetProducts, { params });
     }
-    getDetailProduct(productId: number) {
+    getDetailProduct(productId: number) : Observable<any> {
         return this.http.get(`${this.apiGetProducts}/${productId}`);
     }
     getProductsByIds(productIds: number[]):Observable<Product[]> {
