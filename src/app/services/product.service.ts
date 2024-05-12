@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { Product } from '../models/product';
 import { ProductDTO } from "../dtos/product/product.dto";
+import { ProductResponse } from "../responses/product/product.response";
 
 @Injectable({
     providedIn: 'root'
@@ -34,5 +35,18 @@ export class ProductService {
     updateProduct(productId: number, productDTO: ProductDTO){
         return this.http.put(`${this.apiGetProducts}/${productId}`, productDTO);
     }
+    getHotProducts() : Observable<Product[]> {
+        return this.http.get<Product[]>(`${this.apiGetProducts}/top-sold-products`);
+    }
+    getAllSoldProducts(keyword: string, categoryId: number,page: number, limit: number) : Observable<Product[]> {
+        const params = new HttpParams()
+            .set('keyword', keyword)
+            .set('category_id', categoryId)
+            .set('page', page.toString())
+            .set('limit', limit.toString())
+        return this.http.get<Product[]>(`${this.apiGetProducts}/sold-products`, { params });
+    } 
+    //createProduct(productDTO: ProductDTO, )
 }
 
+// them slogan, liet ra cac mat hang hot, quan ly nguon nhap sach

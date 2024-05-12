@@ -18,13 +18,18 @@
                     <li class="nav-item">
                         <a  (click)="showAdminComponent('products')" class="nav-link">Quản lý sản phẩm</a>
                     </li>
+                    <li class="nav-item">
+                        <a  (click)="showAdminComponent('sold-products')" class="nav-link">Sản phẩm đã bán</a>
+                    </li>
                 </ul>
+                <div class="mt-auto"><h4>Tổng doanh thu: {{totalRevenue | number:'1.0-0'}} VNĐ</h4></div>
             </div>
         </nav>
         <div class="col-md-10 col-lg-10 overflow-auto">
             <ng-container [ngSwitch]="adminComponent">
                 <app-order-admin *ngSwitchCase="'orders'"></app-order-admin>
                 <app-product-admin *ngSwitchCase="'products'"></app-product-admin>
+                <app-sold-product-admin *ngSwitchCase="'sold-products'" ></app-sold-product-admin>>
             </ng-container>
         </div>
     </div>

@@ -35,4 +35,7 @@ export class OrderService {
         const url = `${this.apiOrder}/${orderId}`;
         return this.http.delete(url);
     }
+    getTotalRevenue(): Observable<any> {
+        return this.http.get(`${this.apiOrder}/total-revenue`);
+    }
 }

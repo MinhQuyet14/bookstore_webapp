@@ -2,9 +2,12 @@
 <!-- HEADER -->
 <app-header></app-header>
 <div class="container">
+    <div class="ad-banner">
+        <div class="banner-content"></div>
+    </div>
     <!--  -->
     <div class="intro-section">
-        <h2 style="color: aliceblue;">Danh sách các sản phẩm</h2>
+        <h2 style="color: aliceblue;">Chào mừng bạn tới với nhà sách SBook</h2>
     </div>
     <!--  -->
     <div class="search-box">
@@ -17,13 +20,17 @@
         <input style="margin-left: 6px;" type="button" class="btn btn-primary ml-2" (click)="searchProducts()" value="Tìm kiếm">
     </div>
     <!--  -->
+    <br><br>
     <div class="row">
-        <div class="col-lg-4 col-md-6" *ngFor="let product of products">
+        <div><h3 style="color: aliceblue;">Danh sách các sản phẩm hot nhất, đang bán chạy</h3></div>
+        <div class="col-lg-4 col-md-6" *ngFor="let hot_product of hot_products">
             <div class="product-item">
-                <a [routerLink]="['/products', product.id]"><img [src]="product.url" alt="Product-img" class="product-image"></a>
-                <h4 class="product-name">{{ product.name }}</h4>
-                <p class="product-description">{{ product.description.slice(0, 95) }}...</p>
-                <p class="product-price">Giá: {{product.price | number:'1.0-0'}}</p>
+                <a [routerLink]="['/products', hot_product.id]"><img [src]="hot_product.url" alt="Product-img" class="product-image"></a>
+                <h4 class="product-name">{{ hot_product.name }}</h4>
+                <p class="product-price">Tác giả: {{hot_product.author}}</p>
+                <p class="product-description">{{ hot_product.description.slice(0, 95) }}...</p>
+                <p class="product-price">Giá: {{hot_product.price | number:'1.0-0'}}</p>
+                <p class="product-price">Còn lại: {{hot_product.units_in_stock}} | Đã bán: {{hot_product.sold}}</p>
                 <div class="product-action">
                     <button (click)="addToCart()" class="btn btn-primary">Thêm vào giỏ</button>
                     <p style="margin-right: 6px;"></p>
@@ -32,7 +39,26 @@
             </div>
         </div>
     </div>
-    <nav aria-label="Page navigation" style="margin-top: 100px;">
+    <br><br>
+    <div class="row">
+        <div><h3 style="color: aliceblue;">Danh sách các sản phẩm</h3></div>
+        <div class="col-lg-4 col-md-6" *ngFor="let product of products">
+            <div class="product-item">
+                <a [routerLink]="['/products', product.id]"><img [src]="product.url" alt="Product-img" class="product-image"></a>
+                <h4 class="product-name">{{ product.name }}</h4>
+                <p class="product-price">Tác giả: {{product.author}}</p>
+                <p class="product-description">{{ product.description.slice(0, 95) }}...</p>
+                <p class="product-price">Giá: {{product.price | number:'1.0-0'}}</p>
+                <p class="product-price">Còn lại: {{product.units_in_stock}} | Đã bán: {{product.sold}}</p>
+                <div class="product-action">
+                    <button (click)="addToCart()" class="btn btn-primary">Thêm vào giỏ</button>
+                    <p style="margin-right: 6px;"></p>
+                    <button class="btn btn-success" (click)="buyNow()">Mua ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav aria-label="Page navigation" style="margin-top: 100px; display: flex; justify-content: center;">
         <ul class="pagination">
             <li class="page-item">
                 <a href="#" class="page-link" (click)="onPageChange(0)">Đầu</a>

@@ -3,8 +3,9 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
 import { Category } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import { ProductResponse } from 'src/app/responses/product/product.response';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
+  hot_products: Product[] = [];
   categories: Category[] = [];
   selectedCategoryId: number = 0;
   currentPage: number = 0;
@@ -22,17 +24,20 @@ export class HomeComponent implements OnInit {
   visiblePage: number[] = [];
   keyword: string = "";
   product?: Product
+  productId: number = 0;
   quantity: number = 1
   constructor(
     private productService: ProductService, 
     private categoryService: CategoryService, 
     private cartService: CartService,
-    //private rout: ActivatedRoute
+    private router: Router,
+    private rout: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     this.getProducts(this.keyword , this.selectedCategoryId ,this.currentPage, this.itemsPerPage);
     this.getCategories(1, 100);
+    this.getHotProducts()
   
   }
   getCategories(page: number, limit: number){
@@ -93,6 +98,21 @@ export class HomeComponent implements OnInit {
     
     return new Array(endPage-startPage +1).fill(0).map((_, index)=>startPage+index);
   }
+  getHotProducts(){
+    this.productService.getHotProducts().subscribe({
+      next: (response: Product[]) => {
+        debugger
+        this.hot_products = response;
+      },
+      complete: ()=>{
+        debugger
+      },
+      error(err: any) {
+        debugger;
+        console.error('Error fetching products: ', err);  
+      }
+    });
+  }
   addToCart():void {
     debugger
     // if(this.product){
@@ -103,9 +123,10 @@ export class HomeComponent implements OnInit {
     // }
   }
   buyNow(): void {
-    // if(this.product){
-    //   this.cartService.addToCart(this.product.id, this.quantity);
-    // }
+    // this.route.params.subscribe(params => {
+    //   this.productId = +params['id'];
+    // });
+    // this.cartService.addToCart(this.product?.id, this.quantity);
     // this.router.navigate(['/orders'])
   }
   // onProductClick(productId: number){

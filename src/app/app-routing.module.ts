@@ -14,6 +14,7 @@ import { OrderAdminComponent } from "./components/admin/order/order.admin.compon
 import { ProductAdminComponent } from "./components/admin/product/product.admin.component";
 import { DetailOrderAdminComponent } from "./components/admin/detail-order/detail.order.admin.component";
 import { DetailProductAdminComponent } from "./components/admin/detail-product/detail.product.admin.component";
+import { SoldProductAdminComponent } from "./components/admin/sold-product/sold.product.admin.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
     {path: 'admin/orders', component: OrderAdminComponent},
     {path: 'admin/products', component: ProductAdminComponent},
     {path: 'admin/orders/:id', component: DetailOrderAdminComponent},
-    {path: 'admin/products/:id', component: DetailProductAdminComponent}
+    {path: 'admin/products/:id', component: DetailProductAdminComponent},
+    {path: 'admin/sold-products', component: SoldProductAdminComponent}
 
 
 ]

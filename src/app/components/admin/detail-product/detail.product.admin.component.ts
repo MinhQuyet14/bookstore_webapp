@@ -21,7 +21,9 @@ export class DetailProductAdminComponent implements OnInit {
         url: '',
         description: '',
         category_id: 0,
-        author: ''
+        author: '',
+        sold: 0,
+        units_in_stock: 0
         };
     productId: number = 0;
     productDTO?: ProductDTO;
@@ -47,6 +49,8 @@ export class DetailProductAdminComponent implements OnInit {
                 this.productResponse.price = response.price
                 this.productResponse.category_id = response.category_id
                 this.productResponse.author = response.author
+                this.productResponse.sold = response.sold
+                this.productResponse.units_in_stock = response.units_in_stock
             },
             complete: ()=>{
                 debugger

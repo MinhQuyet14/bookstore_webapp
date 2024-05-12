@@ -1,45 +1,47 @@
-<div class="container-fluid">
-    <h1>Chi tiết sản phẩm</h1>
+<div class="container-fluid bg-light">
     <div class="row">
         <div class="col-md-6">
-            <h3>Thông tin sản phẩm</h3>
-            <p><strong>Mã danh mục: </strong>{{productResponse.category_id}}</p>
-            <p><strong>Mã sản phẩm: </strong>{{productResponse.id}}</p>
-            <p><strong>Tên sản phẩm: </strong> <input type="text" value="{{productResponse.name}}" id="name" [(ngModel)]="productResponse.name"> </p>
-            <p><strong>Tác giả: </strong><input type="text" value="{{productResponse.author}}" id="author" [(ngModel)]="productResponse.author"></p>
-            <p><strong>Hình ảnh:</strong><img src="{{productResponse.url}}" alt="" height="400px" width="300px"></p>
-            <p><strong>Giá: </strong><input type="text" value="{{productResponse.price}}" id="price" [(ngModel)]="productResponse.price"></p>
-            <p><strong>Mô tả: </strong><textarea rows="7" cols="60" id="description" [(ngModel)]="productResponse.description"></textarea></p>
-            <!-- <div class="form-group">
-                <label for="statusSelect"><strong>Status:</strong></label>
-                <select id="statusSelect" class="form-control" [(ngModel)]="orderResponse.status">
-                    <option value="pending">pending</option>
-                    <option value="processing">processing</option>
-                    <option value="shipped">shipped</option>
-                    <option value="delivered">delivered</option>
-                    <option value="cancelled">cancelled</option>
-                </select>
-            </div> -->
+                <h1 class="mt-4 mb-4">Chi tiết sản phẩm</h1>
+                <div class="card-body">
+                    <h3 class="card-title">Thông tin sản phẩm</h3>
+                    <div class="form-group">
+                        <label for="category">Mã danh mục:</label>
+                        <p class="form-control-static">{{productResponse.category_id}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="productId">Mã sản phẩm:</label>
+                        <p class="form-control-static">{{productResponse.id}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="productName">Tên sản phẩm:</label>
+                        <input type="text" class="form-control" id="name" [(ngModel)]="productResponse.name">
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Tác giả:</label>
+                        <input type="text" class="form-control" id="author" [(ngModel)]="productResponse.author">
+                    </div>
+                    <div class="form-group">
+                        <label for="units_in_stock">Số lượng còn trong kho:</label>
+                        <input type="text" class="form-control" id="units_in_stock" [(ngModel)]="productResponse.units_in_stock">
+                    </div>
+                    <div class="form-group">
+                        <label for="imageUrl">Hình ảnh:</label>
+                        <img src="{{productResponse.url}}" alt="" class="img-fluid" width="600px" height="450px">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Giá:</label>
+                        <input type="text" class="form-control" id="price" [(ngModel)]="productResponse.price">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Mô tả:</label>
+                        <textarea rows="7" class="form-control" id="description" [(ngModel)]="productResponse.description"></textarea>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" (click)="saveOrder()" style="width: 200px; color: blue;">Lưu</button>
+                    </div>
+                </div>
         </div>
     </div>
-    <h3></h3>
-    <!-- <table class="table">
-        <thead>
-            <tr>
-                <th>Sản phẩm</th>
-                <th>Giá tiền</th>
-                <th>Số lượng</th>
-                <th>Thành tiền</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let order_detail of orderResponse.order_details; let i = index">
-                <td>{{order_detail.product.name}}</td>
-                <td>{{order_detail.product.price}}</td>
-                <td>{{order_detail.number_of_products}}</td>
-                <td>{{ (order_detail.number_of_products * order_detail.product.price) | number:'1.0-0'  }}</td>
-            </tr>
-        </tbody>
-    </table> -->
-    <button class="btn btn-primary col-md-2" style="color: blue;" (click)="saveOrder()">Lưu</button>
 </div>
