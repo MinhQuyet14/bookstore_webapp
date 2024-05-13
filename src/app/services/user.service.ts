@@ -13,7 +13,7 @@ export class UserService {
   private apiRegister = `${environment.apiBaseUrl}/users/register`;
   private apiLogin = `${environment.apiBaseUrl}/users/login`;
   private apiUserDetails = `${environment.apiBaseUrl}/users/details`;
-
+  private apiGetUsers = `${environment.apiBaseUrl}/users`;
   private apiConfig = {
     headers: this.createHeaders(),
   }
@@ -78,5 +78,8 @@ export class UserService {
     } catch (error) {
       console.error(error);
     }
+  }
+  getAllUsers() {
+    return this.http.get(this.apiGetUsers)
   }
 }

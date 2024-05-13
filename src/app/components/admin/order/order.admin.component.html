@@ -4,7 +4,6 @@
         <thead class="thead-dark">
             <tr>
                 <th>Mã</th>
-                <th>Mã ng.dùng</th>
                 <th>Họ tên</th>
                 <th>Email</th>
                 <th>Điện thoại</th>
@@ -23,7 +22,6 @@
         <tbody *ngFor="let order of orders">
             <tr>
                 <td>{{order.id}}</td>
-                <td>{{order.user_id}}</td>
                 <td>{{order.fullname}}</td>
                 <td>{{order.email}}</td>
                 <td>{{order.phone_number}}</td>
@@ -39,7 +37,6 @@
                 <td>
                     <div style="display: inline-block;">
                         <button class="btn btn-primary" style="color: rgb(76, 76, 235);" (click)="viewDetail(order)">Xem chi tiết</button>
-                        <button class="btn btn-danger" style="color: red;" (click)="deleteOrder(order.id)">Xóa</button>
                     </div>
                 </td>
             </tr>

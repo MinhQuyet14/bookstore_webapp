@@ -1,17 +1,16 @@
 <div class="container-fluid">
     <h3>Các sản phẩm đã bán</h3>
-    <button class="btn btn-primary" style="color: blue;">Thêm mới sản phẩm</button><br><br>
+    <br><br>
     <table class="table" >
         <thead class="thead-dark">
             <tr>
                 <th>Mã sản phẩm</th>
                 <th>Tên sản phẩm</th>
                 <th>Hình ảnh</th>
-                <th>Mô tả</th>
                 <th>Đã bán</th>
                 <th>Đơn vị còn trong kho</th>
                 <th>Giá</th>
-                <th>Hành động</th>
+                <!-- <th>Hành động</th> -->
             </tr>
         </thead>
         <tbody *ngFor="let product of products">
@@ -19,17 +18,17 @@
                 <td>{{product.id}}</td>
                 <td>{{product.name}}</td>
                 <td><img src="{{product.url}}" alt="" height="300px" width="260px"></td>
-                <td><textarea rows="10" cols="60" id="description" [(ngModel)]="product.description" readonly></textarea></td>
+                <!-- <td><textarea rows="10" cols="60" id="description" [(ngModel)]="product.description" readonly></textarea></td> -->
                 <td>{{product.sold}}</td>
                 <td>{{product.units_in_stock}}</td>
                 <td>{{product.price}}</td>
-                <td>
+                <!-- <td>
                     <div style="display: inline-block;">
                         <button class="btn btn-primary" style="color: rgb(76, 76, 235);" (click)="viewDetail(product)">Xem chi
                             tiết</button>
                         <button class="btn btn-danger" style="color: red;" (click)="deleteProduct(product.id)">Xóa</button>
                     </div>
-                </td>
+                </td> -->
             </tr>
         </tbody>
     </table>

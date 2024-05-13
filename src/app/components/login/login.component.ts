@@ -72,13 +72,13 @@ export class LoginComponent implements OnInit{
             this.userResponse = {
               id: response.id,
               fullname: response.fullname,
-              //phone_number: response.phone_number,
+              phone_number: response.phone_number,
               address: response.address,
               is_active: response.is_active,
               facebook_account_id: response.facebook_account_id,
               google_account_id: response.google_account_id,
               role: response.role,
-              //email: response.email
+              email: response.email
             }
             this.userService.saveUserToLocalStorage(this.userResponse);
             if(this.userResponse?.role.name == 'ADMIN'){

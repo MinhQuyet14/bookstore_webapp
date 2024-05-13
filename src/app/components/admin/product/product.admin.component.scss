@@ -19,3 +19,7 @@ td, th {
     border: 1px solid black; /* Đường viền cho các ô */
     padding: 8px; /* Khoảng cách nội dung với viền */
 }
+td, th {
+    text-align: center;
+    vertical-align: middle;
+}

@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   product?: Product
   productId: number = 0;
   quantity: number = 1
+  showHotProducts: boolean = true;
   constructor(
     private productService: ProductService, 
     private categoryService: CategoryService, 
@@ -77,6 +78,7 @@ export class HomeComponent implements OnInit {
     this.itemsPerPage = 9;
     debugger
     this.getProducts(this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage);
+    this.showHotProducts = false;
   }
 
   onPageChange(page: number){

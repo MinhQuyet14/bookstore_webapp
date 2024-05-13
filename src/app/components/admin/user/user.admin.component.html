@@ -1,44 +1,39 @@
 <div class="container-fluid">
-    <h3>Trang quản lý sản phẩm</h3>
-    <button class="btn btn-primary" style="color: blue;">Thêm mới sản phẩm</button><br>
-    <div class="search-box" style="margin-top: 10px;">
+    <h3>Danh sách người dùng</h3>
+    <!-- <div class="search-box" style="margin-top: 10px;">
         <input type="text" class="form-control search-input" placeholder="Tìm kiếm"
             [(ngModel)]="keyword">        <p style="margin-left: 6px;"></p>
         <input style="margin-left: 6px; color: blue;" type="button" class="btn btn-primary ml-2" (click)="searchProducts()" value="Tìm kiếm">
-    </div><br><br>
+    </div> -->
+    <br><br>
     <table class="table" >
         <thead class="thead-dark">
             <tr>
-                <th>Mã sản phẩm</th>
-                <th>Tên sản phẩm</th>
-                <th>Hình ảnh</th>
-                <th>Tác giả</th>
-                <th>Đã bán</th>
-                <th>Đơn vị còn trong kho</th>
-                <th>Giá</th>
+                <th>Mã người dùng</th>
+                <th>Tên người dùng</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Trạng thái</th>
                 <th>Hành động</th>
             </tr>
         </thead>
-        <tbody *ngFor="let product of products">
+        <tbody *ngFor="let user of users">
             <tr>
-                <td>{{product.id}}</td>
-                <td>{{product.name}}</td>
-                <td><img src="{{product.url}}" alt="" height="300px" width="260px"></td>
-                <td>{{product.author}}</td>
-                <td>{{product.sold}}</td>
-                <td>{{product.units_in_stock}}</td>
-                <td>{{product.price}}</td>
+                <td>{{user.id}}</td>
+                <td>{{user.fullname}}</td>
+                <td>{{user.phone_number}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.is_active}}</td>
                 <td>
                     <div style="display: inline-block;">
-                        <button class="btn btn-primary" style="color: rgb(76, 76, 235);" (click)="viewDetail(product)">Xem chi
-                            tiết</button>
-                        <button class="btn btn-danger" style="color: red;" (click)="deleteProduct(product.id)">Xóa</button>
+                        <button class="btn btn-warning" style="color: yellow" >Hạn chế</button>
                     </div>
+                    <!-- (click)="disable(user)" -->
                 </td>
             </tr>
         </tbody>
     </table>
-    <div class="d-flex justify-content-center">
+    <!-- <div class="d-flex justify-content-center">
         <nav aria-label="Page navigation" style="margin-top: 80px;">
             <ul class="pagination">
                 <li class="page-item">
@@ -55,5 +50,5 @@
                 </li>
             </ul>
         </nav>
-    </div>
+    </div> -->
 </div>

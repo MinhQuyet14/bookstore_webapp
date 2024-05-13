@@ -23,6 +23,7 @@ import { ProductAdminComponent } from './components/admin/product/product.admin.
 import { DetailOrderAdminComponent } from './components/admin/detail-order/detail.order.admin.component';
 import { DetailProductAdminComponent } from './components/admin/detail-product/detail.product.admin.component';
 import { SoldProductAdminComponent } from './components/admin/sold-product/sold.product.admin.component';
+import { UserAdminComponent } from './components/admin/user/user.admin.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { SoldProductAdminComponent } from './components/admin/sold-product/sold.
     DetailOrderAdminComponent,
     DetailProductAdminComponent,
     SoldProductAdminComponent,
+    UserAdminComponent,
   ],
   imports: [
     ReactiveFormsModule,

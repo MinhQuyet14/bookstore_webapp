@@ -46,7 +46,7 @@ export class UserProfileComponent implements OnInit{
             this.userProfileForm.patchValue({
               fullname: this.userResponse?.fullname,
               address: this.userResponse?.address,
-              // email: this.userResponse?.email,
+              email: this.userResponse?.email,
             })
             if(this.userResponse != undefined) {
               this.userService.saveUserToLocalStorage(this.userResponse);
