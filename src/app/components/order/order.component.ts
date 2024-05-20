@@ -120,5 +120,5 @@ export class OrderComponent implements OnInit {
       0
     );
   }
-
+  
 }

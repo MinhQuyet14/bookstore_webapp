@@ -51,6 +51,7 @@
                         <th scope="col">Số lượng</th>
                         <th scope="col">Đơn giá</th>
                         <th scope="col">Thành tiền</th>
+                        <th>Xóa sản phẩm</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,6 +68,7 @@
                             <td>{{ item.quantity }}</td>
                             <td>{{ item.product.price | number:'1.0-0' }}</td>
                             <td>{{ (item.product.price*item.quantity) | number: '1.0-0' }}</td>
+                            <td><button class="btn btn-warning"> Xóa</button></td>
                         </tr>
                     </ng-container>
                 </tbody>
