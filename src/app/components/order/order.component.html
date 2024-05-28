@@ -68,7 +68,7 @@
                             <td>{{ item.quantity }}</td>
                             <td>{{ item.product.price | number:'1.0-0' }}</td>
                             <td>{{ (item.product.price*item.quantity) | number: '1.0-0' }}</td>
-                            <td><button class="btn btn-warning"> Xóa</button></td>
+                            <td><button class="btn btn-warning" (click)="deleteProduct(item.product.id)"> Xóa</button></td>
                         </tr>
                     </ng-container>
                 </tbody>

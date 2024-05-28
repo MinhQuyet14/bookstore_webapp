@@ -27,7 +27,10 @@ export class CartService {
     getCart(): Map<number, number> {
         return this.cart;
     }
-
+    deleteProduct(productId: number): void {
+        this.cart.delete(productId);
+        this.saveCartToLocalStorage();
+    }
     private saveCartToLocalStorage(): void {
         localStorage.setItem('cart', JSON.stringify(Array.from(this.cart.entries())));
     }

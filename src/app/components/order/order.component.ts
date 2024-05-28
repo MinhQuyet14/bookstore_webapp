@@ -121,4 +121,13 @@ export class OrderComponent implements OnInit {
     );
   }
   
+  deleteProduct(productId: any): void {
+    // Remove the product from the cart in localStorage
+    this.cartService.deleteProduct(productId);
+  
+    // Reload the current page to reflect the changes
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/orders']);
+    });
+  }
 }
