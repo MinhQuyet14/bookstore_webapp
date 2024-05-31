@@ -1,22 +1,22 @@
 <div class="container-fluid">
     <h3>Trang quản lý đơn hàng</h3>
-    <table class="table">
+    <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
-                <th>Mã</th>
-                <th>Họ tên</th>
-                <th>Email</th>
-                <th>Điện thoại</th>
-                <th>Địa chỉ</th>
-                <th>Ghi chú</th>
-                <th>Ngày đặt</th>
-                <th>Trạng thái</th>
-                <th>Tổng giá tiền</th>
-                <th>Phương thức giao hàng</th>
+                <th scope="col">Mã</th>
+                <th scope="col">Họ tên</th>
+                <th scope="col">Email</th>
+                <th scope="col">Điện thoại</th>
+                <th scope="col">Địa chỉ</th>
+                <th scope="col">Ghi chú</th>
+                <th scope="col">Ngày đặt</th>
+                <th scope="col">Trạng thái</th>
+                <th scope="col">Tổng giá tiền</th>
+                <th scope="col">Phương thức giao hàng</th>
                 <!-- <th>Địa chỉ giao hàng</th> -->
                 <!-- <th>Ngày giao hàng</th> -->
-                <th>Phương thức thanh toán</th>
-                <th>Hành động</th>
+                <th scope="col">Phương thức thanh toán</th>
+                <th scope="col">Hành động</th>
             </tr>
         </thead>
         <tbody *ngFor="let order of orders">
@@ -36,7 +36,7 @@
                 <td>{{order.payment_method}}</td>
                 <td>
                     <div style="display: inline-block;">
-                        <button class="btn btn-primary" style="color: rgb(76, 76, 235);" (click)="viewDetail(order)">Xem chi tiết</button>
+                        <button class="btn btn-primary"  (click)="viewDetail(order)">Xem chi tiết</button>
                     </div>
                 </td>
             </tr>

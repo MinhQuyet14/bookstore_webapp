@@ -1,29 +1,31 @@
 <div class="container-fluid">
     <h1>Chi tiết đơn hàng</h1>
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Thông tin đơn hàng</h3>
-            <p><strong>Mã đơn hàng:</strong>{{orderResponse.id}}</p>
-            <p><strong>Mã người dùng:</strong>{{orderResponse.user_id}}</p>
-            <p><strong>Họ và tên:</strong>{{orderResponse.fullname}}</p>
-            <p><strong>Số điện thoại:</strong>{{orderResponse.phone_number}}</p>
-            <p><strong>Email:</strong>{{orderResponse.email}}</p>
-            <p><strong>Địa chỉ:</strong>{{orderResponse.address}}</p>
-            <p><strong>Ghi chú:</strong>{{orderResponse.note}}</p>
-            <p><strong>Ngày đặt hàng:</strong>{{orderResponse.order_date | date}}</p>
-
-            <div class="form-group">
-                <label for="statusSelect"><strong>Status:</strong></label>
-                <select id="statusSelect" class="form-control" [(ngModel)]="orderResponse.status">
-                    <option value="pending">pending</option>
-                    <option value="processing">processing</option>
-                    <option value="shipped">shipped</option>
-                    <option value="delivered">delivered</option>
-                    <option value="cancelled">cancelled</option>
-                </select>
+    <form action="">
+        <div class="row form-group">
+            <div class="col-md-6">
+                <h3>Thông tin đơn hàng</h3>
+                <p><strong>Mã đơn hàng:</strong>{{orderResponse.id}}</p>
+                <p><strong>Mã người dùng:</strong>{{orderResponse.user_id}}</p>
+                <p><strong>Họ và tên:</strong>{{orderResponse.fullname}}</p>
+                <p><strong>Số điện thoại:</strong>{{orderResponse.phone_number}}</p>
+                <p><strong>Email:</strong>{{orderResponse.email}}</p>
+                <p><strong>Địa chỉ:</strong>{{orderResponse.address}}</p>
+                <p><strong>Ghi chú:</strong>{{orderResponse.note}}</p>
+                <p><strong>Ngày đặt hàng:</strong>{{orderResponse.order_date | date}}</p>
+    
+                <div class="form-group">
+                    <label for="statusSelect"><strong>Status:</strong></label>
+                    <select id="statusSelect" class="form-control" [(ngModel)]="orderResponse.status">
+                        <option value="pending">pending</option>
+                        <option value="processing">processing</option>
+                        <option value="shipped">shipped</option>
+                        <option value="delivered">delivered</option>
+                        <option value="cancelled">cancelled</option>
+                    </select>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
     <h3></h3>
     <table class="table">
         <thead>
