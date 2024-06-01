@@ -12,9 +12,9 @@
                     <li class="nav-item">
                         <a (click)="showAdminComponent('orders')" class="nav-link">Quản lý đơn hàng</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a (click)="showAdminComponent('categories')" class="nav-link">Categories</a>
-                    </li> -->
+                    <li class="nav-item">
+                        <a (click)="showAdminComponent('categories')" class="nav-link">Quản lý danh mục</a>
+                    </li>
                     <li class="nav-item">
                         <a  (click)="showAdminComponent('products')" class="nav-link">Quản lý sản phẩm</a>
                     </li>
@@ -24,8 +24,16 @@
                     <li class="nav-item">
                         <a  (click)="showAdminComponent('users')" class="nav-link">Quản lý người dùng</a>
                     </li>
+                    <li class="nav-item">
+                        <a  (click)="showAdminComponent('categories')" class="nav-link">Quản lý nhà cung cấp</a>
+                    </li>
                 </ul>
-                <div class="mt-auto"><h4>Tổng doanh thu: {{totalRevenue | number:'1.0-0'}} VNĐ</h4></div>
+                <br><br><br>
+                <br><br><br>
+                <br><br><br>
+                <br><br><br>
+                <br><br><br>
+                <div style="margin-left: 10px;" class="mt-auto"><h4>Tổng doanh thu: {{totalRevenue | number:'1.0-0'}} VNĐ</h4></div>
             </div>
         </nav>
         <div class="col-md-10 col-lg-10 overflow-auto">

@@ -46,6 +46,9 @@ export class ProductService {
             .set('limit', limit.toString())
         return this.http.get<Product[]>(`${this.apiGetProducts}/sold-products`, { params });
     } 
+    addProduct(): Observable<Product> {
+        return this.http.post<Product>(`${this.apiGetProducts}`, ProductDTO);
+    }
     //createProduct(productDTO: ProductDTO, )
 }
 

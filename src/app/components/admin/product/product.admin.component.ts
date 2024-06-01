@@ -97,6 +97,9 @@ export class ProductAdminComponent implements OnInit {
       debugger
       this.router.navigate(['admin/products', product.id])
   }   
+  addProduct() {
+    this.router.navigate(['/admin/add-product']);
+  }
   searchProducts(){
     this.currentPage = 0;
     this.itemsPerPage = 9;

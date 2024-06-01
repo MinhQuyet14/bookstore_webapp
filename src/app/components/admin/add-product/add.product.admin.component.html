@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <h2>Thêm sản phẩm</h2>
+    <form action="">
+        <div class="row form-group col-md-6">
+            <div class="form-group">
+                <label for="name">Tên sản phẩm: </label>
+                <input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm">
+              </div>
+              <div class="form-group">
+                <label for="price">Giá tiền: </label>
+                <input type="text" class="form-control" id="price" placeholder="Giá tiền">
+              </div>
+              <div class="form-group">
+                <label for="unitsInStock">Số lượng: </label>
+                <input type="text" class="form-control" id="unitsInStock">
+              </div>
+              <div class="form-group">
+                <label for="category">Danh mục sản phẩm: </label>
+                <select class="form-control" id="category">
+                  <option value="4">Sách</option>
+                  <option value="5">Truyện tranh thiếu nhi</option>
+                  <option value="6">Tiểu thuyết</option>
+                </select>
+                </div>
+                <div class="form-group">
+                    <label for="author">Tác giả: </label>
+                    <input type="text" class="form-control" id="author">
+                </div>
+                <div class="form-group">
+                  <label for="category">Nhà cung cấp: </label>
+                  <select class="form-control" id="category">
+                    <option value="0">J</option>
+                    <option value="1">Q</option>
+                    <option value="2">K</option>
+                  </select>
+                  </div>
+              <form>
+                <div class="form-group">
+                  <label for="url">Chọn ảnh</label>
+                  <input type="file" class="form-control-file" id="url">
+                </div>
+              </form>
+              <br>
+              <br>
+              <button type="submit" class="btn btn-primary" (click)="addProduct()">Thêm</button>
+        </div>
+    </form>
+</div>

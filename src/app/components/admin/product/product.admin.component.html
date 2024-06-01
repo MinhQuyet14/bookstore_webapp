@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <h3>Trang quản lý sản phẩm</h3>
-    <button class="btn btn-primary" >Thêm mới sản phẩm</button><br>
+    <button class="btn btn-primary" (click)="addProduct()">Thêm mới sản phẩm</button><br>
     <div class="search-box" style="margin-top: 10px;">
         <input type="text" class="form-control search-input" placeholder="Tìm kiếm"
             [(ngModel)]="keyword">        <p style="margin-left: 6px;"></p>
@@ -32,7 +32,7 @@
                     <div style="display: inline-block;">
                         <button class="btn btn-primary"  (click)="viewDetail(product)">Xem chi
                             tiết</button>
-                        <button class="btn btn-danger"  (click)="deleteProduct(product.id)">Xóa</button>
+                        <button class="btn btn-danger" (click)="deleteProduct(product.id)">Xóa</button>
                     </div>
                 </td>
             </tr>
